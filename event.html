@@ -20,7 +20,6 @@
   </script>
 </head>
 
-{% block scripts %}
 <script type="text/javascript">
 
 	function disableSelection(target){
@@ -37,12 +36,9 @@
 		disableSelection(document.body)
 	});
 </script>
-{% endblock %}
-{% block body %}
 
 	<div id="search a song" style="clear:both"></div><br style="clear:both;" />
 
 	<form action="{{ url_for('create_event') }}" method="post">
 		<input type="submit" value = "Create" onclick="return confirmSubmit()" />
 	</form>
-{% endblock %}
