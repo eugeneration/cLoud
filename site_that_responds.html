@@ -17,29 +17,7 @@ $(function() {
   var notifier = new PusherNotifier(channel);
   });
 
-<<<<<<< HEAD
-/* function stopSound() {
- if (document.all) document.all['BGSOUND_ID'].src='jsilence.mid';
- else self.iplayer.location.replace('jsplayer.htm?stop');
-} */
-
-function play() {
-	
-	document.getElementById("#player").innerHTML="<autostart=true>";
-}
-
-$(function() {
-  var pusher = new Pusher('7625411e5974417ad5ca');
-  var channel = pusher.subscribe('my_notifications');
-  
-channel.bind("play", function(data){
-alert(data);});
-play();
-var notifier = new PusherNotifier(channel);
-});
-playSound("Beeps.mp3")
-=======
-
+/*
 $(function() {
   var pusher = new Pusher('7625411e5974417ad5ca');
   var channel = pusher.subscribe('pause_ss');
@@ -47,15 +25,15 @@ $(function() {
     pause();});
   var notifier = new PusherNotifier(channel);
   });
-
+*/
 function play() {
   document.getElementById("player").play();
 }
->>>>>>> f9e4cd06685146a318b87ad922fbd5d5d9f8327d
-
+/*
 function pause() {
   document.getElementById("player").pause();
 } 
+*/
 </script>
 </head>
 <body>
