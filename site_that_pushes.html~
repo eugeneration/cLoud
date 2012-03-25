@@ -1,0 +1,15 @@
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="realtime-notifications/src/lib/gritter/js/jquery.gritter.min.js"></script>
+<link href="realtime-notifications/src/lib/gritter/css/jquery.gritter.css"rel="stylesheet" type="text/css" />
+<script src="http://js.pusherapp.com/1.11/pusher.min.js"></script>
+<script src="realtime-notifications/src/PusherNotifier.js"></script>
+</head>
+<body>
+
+<form> 
+<input type="button" value="Click Me" name="button1"> 
+</form>
+
+</body>
