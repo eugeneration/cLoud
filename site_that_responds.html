@@ -21,8 +21,10 @@ function play() {
 
 $(function() {
   var pusher = new Pusher('7625411e5974417ad5ca');
+` document.write("pusher created");
   var channel = pusher.subscribe('my_notifications');
   channel.bind("play", function(data){play();});
+  document.write("play function called");
   var notifier = new PusherNotifier(channel);
 }
 
