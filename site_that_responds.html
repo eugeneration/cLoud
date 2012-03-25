@@ -16,7 +16,7 @@
 } */
 
 function play() {
-	document.getElementById("player").innerHTML="<embed src=\""+soundfile+"\" hidden=\"true\" autostart=\"true\" loop=\"false\" />");
+	document.getElementById("player").innerHTML="<embed src=\"/Beeps.mp3\" hidden=\"true\" autostart=\"true\" loop=\"false\" />");
 }
 
 $(function() {
@@ -31,6 +31,9 @@ $(function() {
 </script>
 <body>
 <!-- <embed height="50px" width="100px" src="Beeps.mp3"></embed> -->
-
-<embed id='player' src='/Beeps.mp3' hidden='true' autostart='false' loop='false'>
+<audio controls="controls" height="50px" width="100px">
+  <source src="/Beeps.mp3" type="audio/mpeg" />
+<embed height="50px" width="100px" src="/Beeps.mp3" />
+</audio>
+<!-- <embed id='player' src='/Beeps.mp3' hidden='true' autoautoStart='false' loop='false'> -->
 </body>
