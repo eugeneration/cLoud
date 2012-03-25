@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>HTML5 Push Notifications using Pusher</title>
+    
+    <link rel="stylesheet/less" type="text/css" href="lib/twitter-bootstrap/lib/bootstrap.less">
+    <script src="lib/less/less-1.1.5.min.js"></script>
+    
+    <link href="styles.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../src/lib/gritter/css/jquery.gritter.css" />
+    
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="../src/lib/gritter/js/jquery.gritter.min.js"></script>
+    <script src="http://js.pusher.com/1.11/pusher.min.js"></script>
+    <script src="../src/PusherNotifier.js"></script>
+    
+    <script>
+      var NOTIFY_ENDPOINT = "php/notify.php";
+      //var NOTIFY_ENDPOINT = '/notify'; // ruby-sinatra
+    
+      $(function() {
+        $("a[href='#notify']").click(function() {
+          $.ajax({
+            url: NOTIFY_ENDPOINT,
+            data: {"message": "I'm a notification!"}
+          });
+        });
+          
+        $(".notify button").click(handleNotifyButtonClick);
+        
+        var pusher = new Pusher('49e26cb8e9dde3dfc009');
+        var channel = pusher.subscribe('my_notifications');
+        var notifier = new PusherNotifier(channel);
+      });
+      
+      function handleNotifyButtonClick() {
+        var message = $.trim($("#notifyMessage").val());
+        if(message) {
+          $.ajax({
+            url: NOTIFY_ENDPOINT,
+            data: {"message": message}
+          });
+        }
+      }
+    </script>
+  </head>
+  <body>
+
+    <div class="container">
+
+      <div class="topbar">
+        <div class="fill">
+          <div class="container">
+            <a class="brand" href="/">HTML5 Push Notifications using Pusher</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-unit">
+        <h1>HTML5 Push Notifications</h1>
+        <p>This page demonstrates HTML5 Realtime Push Notifications using <a href="http://pusher.com">Pusher</a>. This functionality can easily be added to any web application.</p>
+        <p>The demo below <a href="#notify">Triggers a notification</a> using the <a href="https://github.com/squeeks/Pusher-PHP">PHP Pusher library</a> and displays it using the <a href="https://github.com/jboesch/Gritter">jQuery Gritter notification plugin</a>, which are included within the source.</p>
+        <p><a href="https://github.com/pusher/html5-realtime-push-notifications" class="btn primary large" target="_blank">Get the code &raquo;</a></p>
+        <p><small>We plan to update this sample to contain backend code in other technologies. Feel free to <a href="https://github.com/pusher/html5-realtime-push-notifications">fork</a> and try it for yourself.</small></p>
+      </div>
+      
+      <section class="notify">
+        
+        <div class="page-header">
+          <h1>Notify <small>Trigger a notification</small></h1>
+        </div>
+        
+        <div class="row show-grid">
+          <div class="span4 offset1">
+            <p>Just enter some text into the <code>textarea</code> and click the 'Notify' <code>button</code> to trigger a notification containing the text you've entered.</p>
+          </div>
+          <div class="span4 offset1">
+            <textarea id="notifyMessage">HTML5 Realtime Push Notification</textarea><br />
+            <button class="btn info">Notify</button>
+          </div>
+        </div>
+        
+      </section>
+
+
+      <footer>
+        <p></p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <a href="https://github.com/pusher/html5-realtime-push-notifications"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 20000;" src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+
+  </body>
+</html>
