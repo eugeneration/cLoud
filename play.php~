@@ -5,7 +5,8 @@ $app_key = '7625411e5974417ad5ca';
 $app_secret = '8b74d3b89170e098f6d0';
 $app_id = '17448';
 
+
 $pusher = new Pusher($app_key, $app_secret, $app_id);
 $data = array('message' => 'This is an HTML5 Realtime Push Notification!');
-$pusher->trigger('pause_ss', 'pause', $data);
+$pusher->trigger('my_notifications', 'play', $data);
 ?>
