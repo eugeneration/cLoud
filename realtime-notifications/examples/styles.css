@@ -1,0 +1,48 @@
+#gritter-notice-wrapper {
+  top: 50px !important;
+}
+
+body {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+section {
+  padding-top: 60px;
+}
+
+section .page-header h1 {
+  padding-left: 60px;
+}
+
+.container {
+  width: 640px;
+}
+
+.hero-unit {
+  padding-bottom: 30px;
+}
+
+.hero-unit h1 {
+  font-size: 45px;
+}
+
+.hero-unit + section {
+  padding-top: 0;
+}
+
+.hero-unit p:last-child {
+  margin: 0;
+  line-height: 11px;
+}
+
+.notify .btn {
+  float: right;
+  margin-top: 10px;
+}
+
+.notify textarea {
+  height: 100px;
+  width: 100%;
+  font-size: 1.5em;
+}
