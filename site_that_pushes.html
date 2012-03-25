@@ -2,15 +2,23 @@
 <head>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript">
+function play_silence() {
+    $.ajax("/silence.php")
+}
 function push() {
     $.ajax("/play.php")
+}
+function push() {
+    $.ajax("/pause.php")
 }
 </script>
 
 </head>
 <body>
 <form> 
-<input type="button" value="Click Me" onclick="push()"> 
+<input type="button" value="silence" onclick="silence()" /> 
+<input type="button" value="play" onclick="play()" /> 
+<input type="button" value="pause" onclick="pause()" /> 
 </form>
 
 </body>
