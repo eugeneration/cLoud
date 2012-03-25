@@ -9,26 +9,25 @@
 <script src="realtime-notifications/src/PusherNotifier.js"></script>
 
 <script language=javascript>
-
-/* function stopSound() {
+/*
+ function stopSound() {
  if (document.all) document.all['BGSOUND_ID'].src='jsilence.mid';
  else self.iplayer.location.replace('jsplayer.htm?stop');
 } */
 
 function play() {
-	document.getElementById("#player").innerHTML="<autostart=true>";
+	document.getElementById("player").innerHTML="<embed src=\""+soundfile+"\" hidden=\"true\" autostart=\"true\" loop=\"false\" />");
 }
 
 $(function() {
   var pusher = new Pusher('7625411e5974417ad5ca');
   var channel = pusher.subscribe('my_notifications');
-  
-channel.bind("play", function(data){
-alert(data);});
-play();
-var notifier = new PusherNotifier(channel);
-});
+  channel.bind("play", function(data){play();});
+  var notifier = new PusherNotifier(channel);
+}
 
+</script>
+<body>
 <!-- <embed height="50px" width="100px" src="Beeps.mp3"></embed> -->
 
 <embed id='player' src='/Beeps.mp3' hidden=true autostart=false loop=false>
