@@ -2,23 +2,10 @@
 <head>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
     $("#silence").click(function() {$("#mydiv").load("/silence.php");});
     $("#play").click(function() {$("#mydiv").load("/play.php");});
     $("#pause").click(function() {$("#mydiv").load("/pause.php");});
 
-});
-/*
-function play_silence() {
-    $.ajax("/silence.php")
-}
-function push() {
-    $.ajax("/play.php")
-}
-function push() {
-    $.ajax("/pause.php")
-}
-*/
 </script>
 
 </head>
