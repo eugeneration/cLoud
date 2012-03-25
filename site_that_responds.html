@@ -21,7 +21,7 @@ $(function() {
     play();});
   channel_pause.bind("pause", function(){
     pause();});
-  var notifier_play = new PusherNotifier(channel_play_silence);
+  var notifier_play_silence = new PusherNotifier(channel_play_silence);
   var notifier_play = new PusherNotifier(channel_play);
   var notifier_pause = new PusherNotifier(channel_pause);  
 });
@@ -43,8 +43,8 @@ function pause() {
 <body>
 <!-- <embed height="50px" width="100px" src="Beeps.mp3"></embed> -->
 <audio id="player_silence" height="50px" width="100px">
-  <source src="/silence.wav" type="audio/mp3" />
-<embed height="50px" width="100px" src="/silence.wav" />
+  <source src="/Silence.wav" type="audio/mp3" />
+<embed height="50px" width="100px" src="/Silence.wav" />
 </audio>
 <audio id="player" height="50px" width="100px">
   <source src="/Beeps.mp3" type="audio/mp3" />
