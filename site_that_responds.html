@@ -9,7 +9,15 @@
 <script src="realtime-notifications/src/PusherNotifier.js"></script>
 
 <script language=javascript>
+$(function() {
+  var pusher = new Pusher('7625411e5974417ad5ca');
+  var channel = pusher.subscribe('play_ey_ey');
+  channel.bind("play", function(){
+    play();});
+  var notifier = new PusherNotifier(channel);
+  });
 
+<<<<<<< HEAD
 /* function stopSound() {
  if (document.all) document.all['BGSOUND_ID'].src='jsilence.mid';
  else self.iplayer.location.replace('jsplayer.htm?stop');
@@ -30,9 +38,42 @@ play();
 var notifier = new PusherNotifier(channel);
 });
 playSound("Beeps.mp3")
+=======
 
+$(function() {
+  var pusher = new Pusher('7625411e5974417ad5ca');
+  var channel = pusher.subscribe('pause_ss');
+  channel.bind("pause", function(){
+    pause();});
+  var notifier = new PusherNotifier(channel);
+  });
+
+function play() {
+  document.getElementById("player").play();
+}
+>>>>>>> f9e4cd06685146a318b87ad922fbd5d5d9f8327d
+
+function pause() {
+  document.getElementById("player").pause();
+} 
 </script>
-</head>	
+</head>
 <body>
-<embed id='player' src='/Beeps.mp3' hidden=true autostart=false loop=false>
+<!-- <embed height="50px" width="100px" src="Beeps.mp3"></embed> -->
+<audio id="player" height="50px" width="100px">
+  <source src="/Beeps.mp3" type="audio/mp3" />
+<embed height="50px" width="100px" src="/Beeps.mp3" />
+</audio>
+<input type="button" value="hello" onClick="play()"> </input>
+<!-- <embed id="player" src="/Beeps.mp3" hidden="true" autostart="false" autoplay="false" loop="false" /> -->
+<!--
+<object height="50px" width="100px">
+  <param name="autostart" value="true">
+  <param name="src" value="/Beeps.mp3">
+  <param name="autoplay" value="false">
+  <param name="controller" value="false">
+  <embed src="/Beeps.mp3" controller="false" autoplay="false" autostart="false" type="audio/mp3" /> 
+</object>
+-->
 </body>
+</html>
