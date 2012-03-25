@@ -13,20 +13,24 @@ $(function() {
   var pusher = new Pusher('7625411e5974417ad5ca');
   var channel = pusher.subscribe('my_notifications');
   channel.bind("play", function(){
-    alert("yay");});
+    play();});
     var notifier = new PusherNotifier(channel);
   });
 
+function play() {
+  document.getElementById("player").play();
+} 
 </script>
 </head>
 <body>
 <!-- <embed height="50px" width="100px" src="Beeps.mp3"></embed> -->
-<!-- <audio height="50px" width="100px">
-  <source src="/Beeps.mp3" type="audio/mpeg" />
-<embed height="50px" width="100px" src="/Beepsz.mp3" />
-</audio> -->
+<audio id="player" height="50px" width="100px">
+  <source src="/Beeps.mp3" type="audio/mp3" />
+<embed height="50px" width="100px" src="/Beeps.mp3" />
+</audio>
+<input type="button" value="hello" onClick="play()"> </input>
 <!-- <embed id="player" src="/Beeps.mp3" hidden="true" autostart="false" autoplay="false" loop="false" /> -->
-
+<!--
 <object height="50px" width="100px">
   <param name="autostart" value="true">
   <param name="src" value="/Beeps.mp3">
@@ -34,5 +38,6 @@ $(function() {
   <param name="controller" value="false">
   <embed src="/Beeps.mp3" controller="false" autoplay="false" autostart="false" type="audio/mp3" /> 
 </object>
+-->
 </body>
 </html>
