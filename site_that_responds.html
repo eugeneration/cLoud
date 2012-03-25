@@ -3,15 +3,24 @@
 <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="realtime-notifications/src/lib/gritter/js/jquery.gritter.min.js"></script>
 <link href="realtime-notifications/src/lib/gritter/css/jquery.gritter.css"rel="stylesheet" type="text/css" />
-<script src="http://js.pusherapp.com/1.11/pusher.min.js"></script>
+<script src="/pusher.js"></script>
+
+<script type="text/javascript" src="http://mediaplayer.yahoo.com/js"></script>
 <script src="realtime-notifications/src/PusherNotifier.js"></script>
+
+<!--
 <script language=javascript>
 $(function() {
   var pusher = new Pusher('7625411e5974417ad5ca');
   var channel = pusher.subscribe('my_notifications');
-  var notifier = new PusherNotifier(channel);
+channel.bind("play", function(data){
+alert(data);});
+var notifier = new PusherNotifier(channel);
 });
+
+-->
 </script>
 </head>
 <body>
+<embed height="50px" width="100px" src="Billy_Joel_-_Piano_Man.mp3"></embed>
 </body>
