@@ -11,14 +11,27 @@
 <script language=javascript>
 $(function() {
   var pusher = new Pusher('7625411e5974417ad5ca');
-  var channel = pusher.subscribe('my_notifications');
+  var channel = pusher.subscribe('play_ey_ey');
   channel.bind("play", function(){
     play();});
-    var notifier = new PusherNotifier(channel);
+  var notifier = new PusherNotifier(channel);
+  });
+
+
+$(function() {
+  var pusher = new Pusher('7625411e5974417ad5ca');
+  var channel = pusher.subscribe('pause_ss');
+  channel.bind("pause", function(){
+    pause();});
+  var notifier = new PusherNotifier(channel);
   });
 
 function play() {
   document.getElementById("player").play();
+}
+
+function pause() {
+  document.getElementById("player").pause();
 } 
 </script>
 </head>
