@@ -1,0 +1,12 @@
+<html>
+<head>
+<script language=javascript>
+$(function() {
+  var pusher = new Pusher('7625411e5974417ad5ca');
+  var channel = pusher.subscribe('my_notifications');
+  var notifier = new PusherNotifier(channel);
+});
+</script>
+</head>
+<body>
+</body>
