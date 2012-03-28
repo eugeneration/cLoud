@@ -3,15 +3,63 @@
 <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="realtime-notifications/src/lib/gritter/js/jquery.gritter.min.js"></script>
 <link href="realtime-notifications/src/lib/gritter/css/jquery.gritter.css"rel="stylesheet" type="text/css" />
-<script src="http://js.pusherapp.com/1.11/pusher.min.js"></script>
+<script src="/pusher.js"></script>
+
+<script type="text/javascript" src="http://mediaplayer.yahoo.com/js"></script>
 <script src="realtime-notifications/src/PusherNotifier.js"></script>
+
 <script language=javascript>
 $(function() {
   var pusher = new Pusher('7625411e5974417ad5ca');
-  var channel = pusher.subscribe('my_notifications');
-  var notifier = new PusherNotifier(channel);
+  
+  var channel_play_silence = pusher.subscribe('play_silence');
+  var channel_play = pusher.subscribe('play_ey_ey');
+  var channel_pause = pusher.subscribe('pause_ss');
+  channel_play_silence.bind("play_silence", function() {
+    play_silence();});
+  channel_play.bind("play", function(){
+    play();});
+  channel_pause.bind("pause", function(){
+    pause();});
+  var notifier_play_silence = new PusherNotifier(channel_play_silence);
+  var notifier_play = new PusherNotifier(channel_play);
+  var notifier_pause = new PusherNotifier(channel_pause);  
 });
+
+function play_silence() {
+  document.getElementById("player_silence").play();
+}
+
+function play() {
+  document.getElementById("player").play();
+}
+
+function pause() {
+  document.getElementById("player").pause();
+} 
+
 </script>
 </head>
 <body>
+<!-- <embed height="50px" width="100px" src="Beeps.mp3"></embed> -->
+<audio id="player_silence" height="50px" width="100px">
+  <source src="/Silence.wav" type="audio/mp3" />
+<embed height="50px" width="100px" src="/Silence.wav" />
+</audio>
+<audio id="player" height="50px" width="100px">
+  <source src="/Beeps.mp3" type="audio/mp3" />
+<embed height="50px" width="100px" src="/Beeps.mp3" />
+</audio>
+<!--<input type="button" value="hello" onClick="play()"> </input>
+<embed id="player" src="/Beeps.mp3" hidden="true" autostart="false" autoplay="false" loop="false" /> -->
+<!--
+<object height="50px" width="100px">
+  <param name="autostart" value="true">
+  <param name="src" value="/Beeps.mp3">
+  <param name="autoplay" value="false">
+  <param name="controller" value="false">
+  <embed src="/Beeps.mp3" controller="false" autoplay="false" autostart="false" type="audio/mp3" /> 
+</object>
+-->
 </body>
+</html>
