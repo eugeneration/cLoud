@@ -17,11 +17,11 @@ $(function() {
   var channel_play = pusher.subscribe('play_ey_ey');
   var channel_pause = pusher.subscribe('pause_ss');
   channel_play_silence.bind("play_silence", function() {
-    play_silence();});
+                             play_silence();});
   channel_play.bind("play", function(data){
-alert(data["message"], data["message2");
-play();
-});
+     alert(data["message"], data["message2"]);
+     play();
+  });
 
   channel_pause.bind("pause", function(){
     pause();});
