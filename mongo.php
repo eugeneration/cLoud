@@ -22,6 +22,4 @@ $cursor = $collection->find();
 
 // iterate through the results
 
-}
-
 ?>
