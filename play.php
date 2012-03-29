@@ -7,7 +7,7 @@ $app_id = '17464';
 
 $pusher = new Pusher($app_key, $app_secret, $app_id);
 
-$data = array('message' => microtime(true) + 1);
+$data = array('message' => microtime(true));
 
 $pusher->trigger('play_ey_ey', 'play', $data);
 ?>
