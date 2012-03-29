@@ -6,6 +6,6 @@ $app_secret = '8b74d3b89170e098f6d0';
 $app_id = '17448';
 
 $pusher = new Pusher($app_key, $app_secret, $app_id);
-$data = array('message' => 'This is an HTML5 Realtime Push Notification!');
+$data = array('message' => microtime());
 $pusher->trigger('play_ey_ey', 'play', $data);
 ?>
