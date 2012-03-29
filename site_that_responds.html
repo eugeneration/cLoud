@@ -17,8 +17,10 @@ $(function() {
   var channel_pause = pusher.subscribe('pause_ss');
   channel_play_silence.bind("play_silence", function() {
     play_silence();});
-  channel_play.bind("play", function(){
-    play();});
+  channel_play.bind("play", function(data){
+alert(data["message"])
+play();
+});
   channel_pause.bind("pause", function(){
     pause();});
   var notifier_play_silence = new PusherNotifier(channel_play_silence);
