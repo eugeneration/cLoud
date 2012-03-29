@@ -24,7 +24,7 @@ $(function() {
      serverTime = data["message"] * 1000;
      timeOffset = browserTime - (serverTime + TIME_DELAY);
      /* alert("server time: " + serverTime + " browser time: " + browserTime + "  wait time in ms for 1 second delay after server push: " + timeOffset); */
-     setTimeout("play", timeOffset)
+     setTimeout("play()", timeOffset)
      /* play(); */
   });
 
