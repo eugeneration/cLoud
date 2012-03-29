@@ -18,8 +18,9 @@ $(function() {
   var channel_pause = pusher.subscribe('pause_ss');
   channel_play_silence.bind("play_silence", function() {
                              play_silence();});
+  browserTime = new Date.getTime();
   channel_play.bind("play", function(data){
-     alert(data["message"] + " " + data["message2"]);
+     alert(data["message"] + " " + browserTime);
      play();
   });
 
