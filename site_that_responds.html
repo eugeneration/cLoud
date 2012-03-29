@@ -20,7 +20,7 @@ $(function() {
                              play_silence();});
   browserTime = (new Date).getTime();
   channel_play.bind("play", function(data){
-     alert(data["message"] + " " + browserTime);
+     alert(data["message"] * 1000 + " " + browserTime);
      play();
   });
 
