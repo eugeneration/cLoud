@@ -1,9 +1,9 @@
 <?php
 require_once('realtime-notifications/examples/php/lib/squeeks-Pusher-PHP/lib/Pusher.php');
 
-$app_key = '3b401827ffe6d1227039';
-$app_secret = '82d05a1198b87fe1350d';
-$app_id = '17464';
+$app_key = 'df1ffbdf6332e86c4b40';
+$app_secret = '7a516170d85d2be0809c';
+$app_id = '18059';
 
 $pusher = new Pusher($app_key, $app_secret, $app_id);
 

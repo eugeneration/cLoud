@@ -13,7 +13,7 @@ $.ajax("/getoffset.php");
 TIME_DELAY = 1000 /* for one second time delay from server time */
 
 $(function() {
-  var pusher = new Pusher('3b401827ffe6d1227039');
+  var pusher = new Pusher('df1ffbdf6332e86c4b40');
   var channel_play_silence = pusher.subscribe('play_silence');
   var channel_play = pusher.subscribe('play_ey_ey');
   var channel_pause = pusher.subscribe('pause_ss');
