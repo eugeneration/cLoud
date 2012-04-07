@@ -24,7 +24,9 @@ $(function() {
      serverTime = data["message"] * 1000;
      timeOffset = browserTime - (serverTime + TIME_DELAY);
      /* alert("server time: " + serverTime + " browser time: " + browserTime + "  wait time in ms for 1 second delay after server push: " + timeOffset); */
-     setTimeout("play()", timeOffset)
+     document.write(timeOffset);
+     setTimeout("play()", timeOffset);
+
      /* play(); */
   });
 
@@ -51,14 +53,27 @@ function pause() {
 </head>
 <body>
 <!-- <embed height="50px" width="100px" src="Beeps.mp3"></embed> -->
+
+<audio id="player" controls="controls" height="50px" width="100px">
+  <source src="/Beeps.mp3" type="audio/mpeg" />
+<embed height="50px" width="100px" src="/Beeps.mp3" />
+</audio>
+
+<!--
+
 <audio id="player_silence" height="50px" width="100px">
   <source src="/Silence.wav" type="audio/wav" />
 <embed height="50px" width="100px" src="/Silence.wav" />
 </audio>
-<audio id="player" height="50px" width="100px">
+
+
+
+<video id="player" height="50px" width="100px">
   <source src="/Strobe.wav" type="audio/wav" />
 <embed height="50px" width="100px" src="/Strobe.wav" />
 </audio>
+-->
+
 <!--<input type="button" value="hello" onClick="play()"> </input>
 <embed id="player" src="/Beeps.mp3" hidden="true" autostart="false" autoplay="false" loop="false" /> -->
 <!--
