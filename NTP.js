@@ -14,7 +14,7 @@ var NTP = {
   cookieShelfLife : 7, //7 days
   requiredResponses : 2,
   serverTimes : new Array, 
-  serverUrl : "/path/to/getTime",
+  serverUrl : "/site_that_responds.html",
   resyncTime : 10, // minutes
   sync : function(){
       // if the time was set within the last x minutes; ignore this set request; time was synce recently enough
