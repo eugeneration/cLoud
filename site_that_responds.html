@@ -10,24 +10,29 @@
 
 <script language=javascript>
 $.ajax("/getoffset.php");
-TIME_DELAY = 1000 /* for one second time delay from server time */
-
+TIME_DELAY = 100 /* for three second time delay from server time */
+var audioPlayer = new Audio();
+audioPlayer.src="/Beeps.wav";
+audioPlayer.load()
 $(function() {
+  
+  setTimeout("pause()", 100);
   var pusher = new Pusher('df1ffbdf6332e86c4b40');
   var channel_play_silence = pusher.subscribe('play_silence');
   var channel_play = pusher.subscribe('play_ey_ey');
   var channel_pause = pusher.subscribe('pause_ss');
   channel_play_silence.bind("play_silence", function() {
                              play_silence();});
-  browserTime = (new Date).getTime();
+  browserTime = (new Date).getTime() / 100000;
   channel_play.bind("play", function(data){
-     serverTime = data["message"] * 1000;
-     timeOffset = browserTime - (serverTime + TIME_DELAY);
-     /* alert("server time: " + serverTime + " browser time: " + browserTime + "  wait time in ms for 1 second delay after server push: " + timeOffset); */
-     document.write(timeOffset);
-     setTimeout("play()", timeOffset);
+     serverTime = data["message"] / 100;
+     timeOffset = browserTime - serverTime + TIME_DELAY;
+     "server time: " + serverTime + " browser time: " + browserTime + "  wait time in ms for 0.1 second delay after server push: " + timeOffset
+     /* document.write( timeOffset); */
+     document.getElementById("offset").innerHTML =  "server time: " + serverTime + " browser time: " + browserTime + "  wait time in ms for 0.1 second delay after server push: " + timeOffset;
+     setTimeout("audioPlayer.play()", timeOffset);
+ 
 
-     /* play(); */
   });
 
   channel_pause.bind("pause", function(){
@@ -54,10 +59,14 @@ function pause() {
 <body>
 <!-- <embed height="50px" width="100px" src="Beeps.mp3"></embed> -->
 
-<audio id="player" controls="controls" height="50px" width="100px">
+<audio id="player" controls="controller" height="50px" width="100px">
   <source src="/Beeps.mp3" type="audio/mpeg" />
 <embed height="50px" width="100px" src="/Beeps.mp3" />
 </audio>
+
+<div id="offset">
+</div>
+
 
 <!--
 
