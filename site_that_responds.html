@@ -7,7 +7,8 @@
 
 <script type="text/javascript" src="http://mediaplayer.yahoo.com/js"></script>
 <script src="realtime-notifications/src/PusherNotifier.js"></script>
-
+<script language="javascript" src="/js/prototype.js"></script>
+<script language="javascript" src="/js/NTP.js"></script>
 <script language=javascript>
 $.ajax("/getoffset.php");
 TIME_DELAY = 100 /* for three second time delay from server time */
@@ -15,8 +16,7 @@ var audioPlayer = new Audio();
 audioPlayer.src="/Beeps.wav";
 audioPlayer.load()
 $(function() {
-  
-  setTimeout("pause()", 100);
+jsClockGMT()
   var pusher = new Pusher('df1ffbdf6332e86c4b40');
   var channel_play_silence = pusher.subscribe('play_silence');
   var channel_play = pusher.subscribe('play_ey_ey');
@@ -52,8 +52,32 @@ function play() {
 
 function pause() {
   document.getElementById("player").pause();
-} 
+}
+ 
+// Zulu-time clock
+function jsClockGMT(){
+     // Copyright 1999 - 2001 by Ray Stott
+    if (!document.getElementById('clock0')) {
+    return;
+    }
+    gmtMS = NTP.fixTime(); // offset for how bad our clock is off zulu to zulu
+    var gmtTime =  new Date(gmtMS); // build a new object so we get the right txt back
 
+    var monthNames = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+    var hour = gmtTime.getUTCHours();
+    var minute = gmtTime.getUTCMinutes();
+    var second = gmtTime.getUTCSeconds();
+    var year = gmtTime.getUTCFullYear();
+    var month = monthNames[gmtTime.getUTCMonth()];
+    var day = gmtTime.getUTCDate();
+    var temp = day + " " + month + " " + year;
+    temp += " " + ((hour < 10) ? "0" : "") + hour;
+    temp += ((minute < 10) ? ":0" : ":") + minute;
+    temp += ((second < 10) ? ":0" : ":") + second;
+    temp += " Z ";
+    document.getElementById('clock0').innerHTML = temp;
+    setTimeout("jsClockGMT()",1000);
+}
 </script>
 </head>
 <body>
@@ -64,9 +88,13 @@ function pause() {
 <embed height="50px" width="100px" src="/Beeps.mp3" />
 </audio>
 
+<<<<<<< HEAD
 <div id="offset">
 </div>
 
+=======
+<span id="clock0"></span>
+>>>>>>> 6497885540a6bee8250d76972e2e3419f53a0238
 
 <!--
 

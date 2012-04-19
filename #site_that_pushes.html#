@@ -1,0 +1,20 @@
+<html>
+<head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $("#silence").click(function() {$("#mydiv").load("/silence.php");});
+    $("#play").click(function() {$("#mydiv").load("/play.php");});
+    $("#pause").click(function() {$("#mydiv").load("/pause.php");});
+</script>
+
+</head>
+<body>
+<form> 
+<input id="silence" type="button" value="silence" /> 
+<input id="play" type="button" value="play"  /> 
+<input id="pause" type="button" value="pause" /> 
+</form>
+
+<div id="mydiv"></div>
+</body>
